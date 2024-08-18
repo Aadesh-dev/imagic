@@ -1,0 +1,79 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Next.js: debug server-side",
+        "type": "node-terminal",
+        "request": "launch",
+        "command": "npm run dev"
+      },
+      {
+        "name": "Next.js: debug client-side",
+        "type": "chrome",
+        "request": "launch",
+        "url": "http://localhost:3000"
+      },
+      {
+        "name": "Next.js: debug full stack",
+        "type": "node-terminal",
+        "request": "launch",
+        "command": "npm run dev",
+        "serverReadyAction": {
+          "pattern": "- Local:.+(https?://.+)",
+          "uriFormat": "%s",
+          "action": "debugWithChrome"
+        }
+      },
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Next.js",
+        "program": "${workspaceFolder}/node_modules/next/dist/bin/next",
+        "args": ["dev"],
+        "runtimeArgs": ["--inspect=9229"],
+        "env": {
+          "NODE_ENV": "development"
+        },
+        "sourceMaps": true,
+        "restart": true
+      },
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Next: Node",
+        "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/next"
+      },
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Next.js: debug full stack",
+        "url": "http://localhost:3000",
+        "runtimeExecutable": "next",
+        "skipFiles": [
+            "<node_internals>/**"
+        ]
+      },
+      {
+        "name": "Next.js: debug server-side",
+        "type": "node",
+        "request": "launch",
+        "runtimeExecutable": "npm",
+        "runtimeArgs": ["run", "dev"],
+        "env": {
+          "NODE_OPTIONS": "--inspect"
+        },
+        "console": "integratedTerminal",
+        "skipFiles": ["<node_internals>/**"],
+        "outFiles": ["${workspaceFolder}/.next/**/*.js"]
+      },
+      {
+        "name": "Attach",
+        "port": 9229,
+        "request": "attach",
+        "skipFiles": [
+            "<node_internals>/**"
+        ],
+        "type": "node"
+    }
+    ]
+  }
